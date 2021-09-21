@@ -30,8 +30,30 @@ input-file: preview/2019-08-15-preview/containerregistry.json
 
 These settings apply only when `--tag=package-2021-07` is specified on the command line.
 
+Some fields are hidden when generating code for Track 2 SDK clients to have desired public API surface.
+
 ``` yaml $(tag) == 'package-2021-07'
 input-file: stable/2021-07-01/containerregistry.json
+directive:
+  - from: swagger-document
+    where: $["paths"]["/acr/v1/{name}"]
+    transform: >
+      delete $.delete["responses"]["202"].schema
+
+  - from: swagger-document
+    where: $["paths"]["/oauth2/token"]
+    transform: >
+      delete $.get
+
+  - from: swagger-document
+    where: $.definitions.TagAttributesBase
+    transform: >
+      delete $.properties.signed
+
+  - from: swagger-document
+    where: $.definitions.ManifestAttributesBase
+    transform: >
+      delete $.properties.configMediaType
 ```
 ---
 # Code Generation
@@ -79,10 +101,13 @@ add-credentials: false
 override-client-name: GeneratedClient
 disable-async-iterators: true
 hide-clients: true
-use-extension:
-  "@autorest/typescript": "6.0.0-beta.4"
-output-folder: ../
-source-code-folder-path: ./src/generated
+api-version-parameter: choice
+
+directive:
+  - from: swagger-document
+    where: $.parameters.ApiVersionParameter
+    transform: >
+      $.required = true
 ```
 
 ## Python
