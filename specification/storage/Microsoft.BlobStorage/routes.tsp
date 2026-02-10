@@ -141,7 +141,7 @@ interface Service {
   @get
   @route("?restype=account&comp=properties")
   @sharedRoute
-  getAccountInfo is StorageOperation<
+  getAccountInfo is StorageOperationNoBody<
     TimeoutParameter,
     {
       ...SkuNameResponseHeader;
@@ -236,7 +236,7 @@ interface Container {
   @get
   @sharedRoute
   @route("?restype=container")
-  getProperties is StorageOperation<
+  getProperties is StorageOperationNoBody<
     {
       ...TimeoutParameter;
       ...LeaseIdOptionalParameter;
@@ -611,7 +611,7 @@ interface Container {
   @get
   @route("?restype=account&comp=properties")
   @sharedRoute
-  getAccountInfo is StorageOperation<
+  getAccountInfo is StorageOperationNoBody<
     {
       ...TimeoutParameter;
     },
@@ -1349,7 +1349,7 @@ interface Blob {
   @get
   @sharedRoute
   @route("?restype=account&comp=properties")
-  getAccountInfo is StorageOperation<
+  getAccountInfo is StorageOperationNoBody<
     {
       ...TimeoutParameter;
     },
