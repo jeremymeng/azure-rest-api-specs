@@ -702,7 +702,7 @@ interface Blob {
     ...LastAccessedResponseHeader;
     ...ImmutabilityPolicyExpiresOnResponseHeader;
     ...ImmutabilityPolicyModeResponseHeader;
-    ...LegalHoldResponseHeader;
+    ...LegalHoldOptionalResponseHeader;
     ...StructuredBodyTypeResponseHeader;
     ...StructuredContentLengthResponseHeader;
     ...ApiVersionHeader;
@@ -755,7 +755,7 @@ interface Blob {
     ...LastAccessedResponseHeader;
     ...ImmutabilityPolicyExpiresOnResponseHeader;
     ...ImmutabilityPolicyModeResponseHeader;
-    ...LegalHoldResponseHeader;
+    ...LegalHoldOptionalResponseHeader;
     ...StructuredBodyTypeResponseHeader;
     ...StructuredContentLengthResponseHeader;
     ...ApiVersionHeader;
@@ -846,7 +846,7 @@ interface Blob {
       ...LastAccessedResponseHeader;
       ...ImmutabilityPolicyExpiresOnResponseHeader;
       ...ImmutabilityPolicyModeResponseHeader;
-      ...LegalHoldResponseHeader;
+      ...LegalHoldOptionalResponseHeader;
     }
   >;
 
