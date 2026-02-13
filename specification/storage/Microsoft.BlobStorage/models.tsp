@@ -20,7 +20,7 @@ scalar base64Bytes extends bytes;
  * This defines the wire format only. Language SDKs wrap this in idiomatic error types.
  */
 @error
-model StorageError {
+model Error {
   /** The error code. */
   #suppress "@azure-tools/typespec-azure-core/casing-style" "Existing API"
   Code?: StorageErrorCode;
